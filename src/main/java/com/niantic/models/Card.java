@@ -1,23 +1,36 @@
 package com.niantic.models;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Card
 {
-    private String color;
-    private int number;
+    private String suit;
+    private String faceValue;
 
-    public Card(String color, int number)
+    public Card(String suit, String faceValue)
     {
-        this.color = color;
-        this.number = number;
+        this.suit = suit;
+        this.faceValue = faceValue;
     }
 
-    public String getColor()
+    public String getSuit()
     {
-        return color;
+        return suit;
     }
 
-    public int getValue()
+    public void setSuit(String newSuit)
     {
-        return number;
+        this.suit = newSuit;
+    }
+
+    public void setFaceValue(String faceValue)
+    {
+        this.faceValue = faceValue;
+    }
+
+    public String getFaceValue()
+    {
+        return faceValue;
     }
 }
