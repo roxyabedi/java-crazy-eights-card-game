@@ -60,9 +60,9 @@ public class CardGameApplication {
             var player = playerQueue.poll();
             UserInterface.displayAllPlayersCards(player, discardPile);
 
-            if (checkForMatchingSuitOrRank(player)) {
+            if (checkForMatchingSuitOrRank()) {
                 playMatchingCard(player);
-            } else if (checkForCrazyEight(player)) {
+            } else if (checkForCrazyEight()) {
                 playCrazyEight(player);
             } else {
                 drawCard(player);
@@ -74,7 +74,7 @@ public class CardGameApplication {
         }
     }
 
-    private boolean checkForMatchingSuitOrRank(Player player) {
+    private boolean checkForMatchingSuitOrRank() {
         System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.GRAY_BACKGROUND + "Do you have a card that matches suit or rank? (y/n)" + ColorCodes.RESET);
         String response = input.nextLine().strip().toLowerCase();
         return response.equalsIgnoreCase("y");
@@ -99,7 +99,7 @@ public class CardGameApplication {
         }
     }
 
-    private boolean checkForCrazyEight(Player player) {
+    private boolean checkForCrazyEight() {
         System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.GRAY_BACKGROUND + "Do you have a Crazy Eight? (y/n)?" + ColorCodes.RESET);
         String answer = input.nextLine().strip().toLowerCase();
         return answer.equalsIgnoreCase("y");

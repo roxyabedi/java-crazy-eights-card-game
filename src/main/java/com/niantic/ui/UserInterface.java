@@ -23,9 +23,9 @@ public class UserInterface {
 
     public static void displayWinner(Player winner) {
         System.out.println();
-        System.out.println(ColorCodes.CYAN + "******************************************" + ColorCodes.RESET);
+        System.out.println(ColorCodes.CYAN + "*****************************************" + ColorCodes.RESET);
         System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.CYAN_BACKGROUND + "          WINNER: " + winner.getName() + "            " + ColorCodes.RESET);
-        System.out.println(ColorCodes.CYAN + "******************************************" + ColorCodes.RESET);
+        System.out.println(ColorCodes.CYAN + "*****************************************" + ColorCodes.RESET);
     }
 }
 
