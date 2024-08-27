@@ -75,9 +75,18 @@ public class CardGameApplication {
     }
 
     private boolean checkForMatchingSuitOrRank() {
-        System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.GRAY_BACKGROUND + "Do you have a card that matches suit or rank? (y/n)" + ColorCodes.RESET);
-        String response = input.nextLine().strip().toLowerCase();
-        return response.equalsIgnoreCase("y");
+        while (true) {
+            System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.GRAY_BACKGROUND + "Do you have a card that matches suit or rank? (y/n)" + ColorCodes.RESET);
+            String response = input.nextLine().strip().toLowerCase();
+            if (response.equalsIgnoreCase("y")) {
+                return true;
+            } else if (response.equalsIgnoreCase("n")) {
+                return false;
+            } else {
+                System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.RED_BACKGROUND + "Oops! Your selection didn't match :( Try again!" + ColorCodes.RESET);
+                System.out.println();
+            }
+        }
     }
 
     private void playMatchingCard(Player player) {
@@ -93,10 +102,21 @@ public class CardGameApplication {
                 .findFirst()
                 .orElse(null);
 
-        if (selectedCard.getSuit().equals(discardPile.getTopCard().getSuit()) || selectedCard.getFaceValue().equals(discardPile.getTopCard().getFaceValue())) {
-            discardPile.addCard(selectedCard);
-            player.getHand().removeCard(selectedCard);
+        if (selectedCard != null) {
+            if (selectedCard.getSuit().equals(discardPile.getTopCard().getSuit()) || selectedCard.getFaceValue().equals(discardPile.getTopCard().getFaceValue())) {
+                discardPile.addCard(selectedCard);
+                player.getHand().removeCard(selectedCard);
+            } else {
+                System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.RED_BACKGROUND + "Oops! Your selection didn't match :( Try again!" + ColorCodes.RESET);
+                System.out.println();
+                playMatchingCard(player);
+            }
+        } else {
+            System.out.println(ColorCodes.WHITE_BRIGHT + ColorCodes.RED_BACKGROUND + "Oops! Your selection didn't match :( Try again!" + ColorCodes.RESET);
+            System.out.println();
+            playMatchingCard(player);
         }
+
     }
 
     private boolean checkForCrazyEight() {
