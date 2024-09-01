@@ -27,8 +27,3 @@ the code later if needed.
     (UnitTests are more difficult to write for these types of classes)
 * Try to find code where Streams could simplify your code
 * Consider using collections besides an ArrayList if possible (not required)
-
-
-
-
-
